@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import sign_up from '/image/sign-up.jpg';
 import googleImg from '/image/google.png';
 import facebookImg from '/image/facebook.png';
 import githubImg from '/image/github.png';
 import { BiLogIn } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     
-    const [photoName, setPhotoName] = useState("Upload your photo")
+    const [photoName, setPhotoName] = useState("Upload your photo");
+    const [error, setError] = useState('');
+
+    const { signInWithGoogle, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handlePhotoName = (image) => {
         setPhotoName(image.name);
@@ -23,6 +31,41 @@ const SignUp = () => {
         const photo = form.photo.files[0];
 
         console.log(username,email, password, photo);  
+    }
+
+    // googleSignIn
+    const handleGoogle = () => {
+        setError('')
+
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json",
+                        // "authorization" : `Bearer ${localStorage.getItem("access-token")}`
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json(saveUser))
+                    .then( () => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Login Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        // navigate(from, { replace: true })
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+                setError(error.message)
+            })
     }
 
     return (
@@ -67,8 +110,8 @@ const SignUp = () => {
                         />
                 </div>
 
-                <div className="flex flex-col gap-3  mb-2">
-                    <label className='bg-emerald-500 rounded-md  w-full text-center'>
+                <div className="flex flex-col gap-3 mb-2">
+                    <label className='bg-emerald-500 rounded-md  w-full text-center cursor-pointer'>
                         <input
                             onChange={(event) => {
                                 handlePhotoName(event.target.files[0])
@@ -98,7 +141,7 @@ const SignUp = () => {
                 <h5 className='text-center font-semibold text-3xl'>Social Login</h5>
 
                 <div className=' flex items-center justify-evenly gap-5 my-5'>
-                    <img src={googleImg} className='w-10 cursor-pointer' alt="" />
+                    <img onClick={handleGoogle} src={googleImg} className='w-10 cursor-pointer' alt="" />
                     <img src={facebookImg} className='w-10 cursor-pointer' alt="" />
                     <img src={githubImg} className='w-10 cursor-pointer' alt="" />
                 </div>

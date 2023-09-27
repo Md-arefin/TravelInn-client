@@ -1,28 +1,69 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import loginImg from '/image/Login-amico.png';
 import googleImg from '/image/google.png';
 import facebookImg from '/image/facebook.png';
 import githubImg from '/image/github.png';
 import { BiLogIn } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 const Login = () => {
 
     const { register, handleSubmit, reset } = useForm();
+    const [error, setError] = useState('');
+    const { signInWithGoogle, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
         console.log(data);
     }
 
+     // googleSignIn
+     const handleGoogle = () => {
+        setError('')
+
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json",
+                        // "authorization" : `Bearer ${localStorage.getItem("access-token")}`
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json(saveUser))
+                    .then( () => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Login Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        // navigate(from, { replace: true })
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+                setError(error.message)
+            })
+    }
+
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-            <div className='w-2/3 mx-auto md:mt-24'>
+        <div className='flex flex-col md:flex-row mx-4 gap-10'>
+            <div className='w-full md:w-1/3 mx-auto md:mt-36'>
                 <img src={loginImg} alt="" />
             </div>
 
-            <form className='w-2/3 mx-auto md:mt-24 p-10 border-2 rounded-lg border-black ' onSubmit={handleSubmit(onSubmit)}>
+            <form className='w-full md:w-1/3 mx-auto md:mt-24 p-10 border-2 rounded-lg border-black ' onSubmit={handleSubmit(onSubmit)}>
 
                 <h5 className='text-center font-semibold text-3xl'>Please Login</h5>
 
@@ -66,7 +107,7 @@ const Login = () => {
                 <h5 className='text-center font-semibold text-3xl'>Social Login</h5>
 
                 <div className=' flex items-center justify-evenly gap-5 my-5'>
-                    <img src={googleImg} className='w-10 cursor-pointer' alt="" />
+                    <img onClick={handleGoogle} src={googleImg} className='w-10 cursor-pointer' alt="" />
                     <img src={facebookImg} className='w-10 cursor-pointer' alt="" />
                     <img src={githubImg} className='w-10 cursor-pointer' alt="" />
                 </div>
