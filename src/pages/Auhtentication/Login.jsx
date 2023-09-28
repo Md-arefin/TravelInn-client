@@ -7,13 +7,14 @@ import githubImg from '/image/github.png';
 import { BiLogIn } from 'react-icons/bi';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
 
+    const { signInWithGoogle, signIn } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
     const [error, setError] = useState('');
-    const { signInWithGoogle, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -25,7 +26,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('http://localhost:5000/add-users', {
                     method: "POST",
                     headers: {
                         'content-type': "application/json"
@@ -59,7 +60,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('http://localhost:5000/add-users', {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",
@@ -91,19 +92,9 @@ const Login = () => {
                 <img src={loginImg} alt="" />
             </div>
 
-            <form className='w-full md:w-1/3 mx-auto md:mt-24 p-10 border-2 rounded-lg border-black ' onSubmit={handleSubmit(onSubmit)}>
+            <form className='w-full md:w-1/3 mx-auto md:mt-24 p-2 md:p-5 lg:p-10 border-2 rounded-lg border-black ' onSubmit={handleSubmit(onSubmit)}>
 
                 <h5 className='text-center font-semibold text-3xl'>Please Login</h5>
-
-                <div className="flex flex-col gap-3 my-2">
-
-                    <label htmlFor="username">Username</label>
-                    <input
-                        className="w-full rounded-md"
-                        type="text"
-                        placeholder='Enter your username...'
-                        {...register("username")} />
-                </div>
 
                 <div className="flex flex-col gap-3  mb-2">
                     <label htmlFor="email">Email</label>
@@ -111,7 +102,7 @@ const Login = () => {
                         className="w-full rounded-md"
                         type="email"
                         placeholder='Enter your email...'
-                        {...register("email")} />
+                        {...register("email")} required/>
                 </div>
 
                 <div className="flex flex-col gap-3  mb-2">
@@ -120,7 +111,7 @@ const Login = () => {
                         className="w-full rounded-md"
                         type="password"
                         placeholder='Enter your password...'
-                        {...register("password")} />
+                        {...register("password")} required/>
                 </div>
 
                 <p className='text-center'>New to Travelling? <Link to='/sign-up' className='underline font-semibold'> Please Sign-up</Link></p>

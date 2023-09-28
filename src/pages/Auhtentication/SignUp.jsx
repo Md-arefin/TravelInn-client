@@ -8,15 +8,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+
 const SignUp = () => {
-    
+
+    const { signInWithGoogle, createUser, updateUserProfile } = useContext(AuthContext);
     const [photoName, setPhotoName] = useState("Upload your photo");
     const [error, setError] = useState('');
-
-    const { signInWithGoogle, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
     const handlePhotoName = (image) => {
         setPhotoName(image.name);
@@ -30,7 +32,60 @@ const SignUp = () => {
         const password = form.password.value;
         const photo = form.photo.files[0];
 
-        console.log(username,email, password, photo);  
+        // console.log(username,email, password, photo);  
+
+        const formData = new FormData();
+        formData.append("image", photo);
+        fetch(img_hosting_url, {
+            method: "POST",
+            body: formData
+        }).then(res => res.json())
+            .then(imgResponse => {
+                if (imgResponse.success) {
+                    const imgURL = imgResponse.data.display_url;
+                    createUser(email, password)
+                        .then(result => {
+                            const loggedUser = result.user;
+                            console.log('loggedUser', loggedUser);
+                            updateUserProfile({
+                                displayName: username,
+                                photoURL: imgURL
+                            })
+                                .then(() => {
+                                    const saveUser = {
+                                        username,
+                                        email,
+                                        imgURL
+                                    }
+                                    fetch('http://localhost:5000/add-users', {
+                                        method: "POST",
+                                        headers: {
+                                            'content-type': "application/json"
+                                        },
+                                        body: JSON.stringify(saveUser)
+                                    })
+                                        .then(res => res.json(saveUser))
+                                        .then(data => {
+                                            if (data.insertedId) {
+                                                Swal.fire({
+                                                    position: 'center',
+                                                    icon: 'success',
+                                                    title: 'Sign up Successful',
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                })
+                                            }
+                                        })
+                                })
+                            navigate('/')
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                            setError(error.message);
+                        })
+
+                }
+            })
     }
 
     // googleSignIn
@@ -42,7 +97,7 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('http://localhost:5000/add-users', {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",
@@ -51,7 +106,7 @@ const SignUp = () => {
                     body: JSON.stringify(saveUser)
                 })
                     .then(res => res.json(saveUser))
-                    .then( () => {
+                    .then(() => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -86,7 +141,8 @@ const SignUp = () => {
                         type="text"
                         name='username'
                         placeholder='Enter your username...'
-                         />
+                        required
+                    />
                 </div>
 
                 <div className="flex flex-col gap-3  mb-2">
@@ -96,7 +152,8 @@ const SignUp = () => {
                         type="email"
                         name='email'
                         placeholder='Enter your email...'
-                         />
+                        required
+                    />
                 </div>
 
                 <div className="flex flex-col gap-3  mb-4">
@@ -107,7 +164,8 @@ const SignUp = () => {
                         type="password"
                         name='password'
                         placeholder='Enter your password...'
-                        />
+                        required
+                    />
                 </div>
 
                 <div className="flex flex-col gap-3 mb-2">
@@ -120,12 +178,11 @@ const SignUp = () => {
                             placeholder="photo"
                             name='photo'
                             className=" hidden"
-                            
-                            />
+                        />
                         <div className="text-lg font-semibold my-2  text-center">
                             {photoName}
                         </div>
-                            
+
                     </label>
                 </div>
 
