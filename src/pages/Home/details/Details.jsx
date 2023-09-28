@@ -10,8 +10,7 @@ const Details = () => {
                         <img src="https://i.ibb.co/L8SDkGN/cody-weiss-h-EMYw-IE6-GEY-unsplash.jpg" className='bg-cover w-full lg:ml-96' alt="" />
                     </div>
                     <div className='absolute top-[300px] lg:ml-16 w-2/3 bg-white p-5'>
-                        <img src="https://i.ibb.co/6sdK3h6/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.jpg" className=' ' alt="" />
-
+                        <img src="https://i.ibb.co/6sdK3h6/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.jpg"  alt="" />
                     </div>
                 </div>
 
