@@ -54,12 +54,12 @@ const Navbar = () => {
                     user ?
                         <div className='flex items-center justify-center gap-3'>
                             <div className="avatar">
-                                <div className="w-24 rounded-xl">
+                                <div className="w-16 rounded-xl">
                                     <img src={user?.photoURL} />
                                 </div>
                             </div>
-                            <button onClick={handleLogout} className="btn">Logout</button>
-                        </div> : <Link to='/login' className='btn'>Login</Link>
+                            <button onClick={handleLogout} className="btn bg-[#a98467]">Logout</button>
+                        </div> : <Link to='/login' className='btn bg-[#a98467]'>Login</Link>
                 }
             </div>
         </div>

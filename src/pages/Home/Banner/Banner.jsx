@@ -22,7 +22,7 @@ const Banner = () => {
                             <p className='text-6xl text-center text-white '>Discover Paradise in Every Stay</p>
                             <p className='uppercase text-white text-opacity-70 text-center my-10 font-semibold lg:text-2xl'>check our latest seasonal promotions</p>
                             <Link to='/' className='text-white flex justify-center'>
-                                <p className='bg-[#a98467] p-1 w-40 text-center '>Check All Rooms</p>
+                                <p className='bg-[#a98467] btn border-none p-1 w-40 text-center '>Check All Rooms</p>
                             </Link>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ const Banner = () => {
                             <p className='text-6xl text-center text-white '>Discover Paradise in Every Stay</p>
                             <p className='uppercase text-white text-opacity-70 text-center my-10 font-semibold lg:text-2xl'>check our latest seasonal promotions</p>
                             <Link to='/' className='text-white flex justify-center'>
-                                <p className='bg-[#a98467] p-1 w-40 text-center '>Check All Rooms</p>
+                                <p className='bg-[#a98467] btn border-none p-1 w-40 text-center '>Check All Rooms</p>
                             </Link>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const Banner = () => {
                             <p className='text-6xl text-center text-white '>Discover Paradise in Every Stay</p>
                             <p className='uppercase text-white text-opacity-70 text-center my-10 font-semibold lg:text-2xl'>check our latest seasonal promotions</p>
                             <Link to='/' className='text-white flex justify-center'>
-                                <p className='bg-[#a98467] p-1 w-40 text-center '>Check All Rooms</p>
+                                <p className='bg-[#a98467] btn border-none p-1 w-40 text-center '>Check All Rooms</p>
                             </Link>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ const Banner = () => {
                             <p className='text-6xl text-center text-white '>Discover Paradise in Every Stay</p>
                             <p className='uppercase text-white text-opacity-70 text-center my-10 font-semibold lg:text-2xl'>check our latest seasonal promotions</p>
                             <Link to='/' className='text-white flex justify-center'>
-                                <p className='bg-[#a98467] p-1 w-40 text-center '>Check All Rooms</p>
+                                <p className='bg-[#a98467] btn border-none p-1 w-40 text-center '>Check All Rooms</p>
                             </Link>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ const Banner = () => {
                             <p className='text-6xl text-center text-white '>Discover Paradise in Every Stay</p>
                             <p className='uppercase text-white text-opacity-70 text-center my-10 font-semibold lg:text-2xl'>check our latest seasonal promotions</p>
                             <Link to='/' className='text-white flex justify-center'>
-                                <p className='bg-[#a98467] p-1 w-40 text-center '>Check All Rooms</p>
+                                <p className='bg-[#a98467] btn border-none p-1 w-40 text-center '>Check All Rooms</p>
                             </Link>
                         </div>
                     </div>
