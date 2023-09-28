@@ -26,6 +26,27 @@ const HotelFacilities = () => {
                     <p className='font-semibold text-center'>Daily Sanitation</p>
                 </div>
             </div>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-3/4 gap-5 lg:ml-[350px] mt-16'>
+                <div className="bg-[#884A39] bg-opacity-75 text-center text-white py-5 font-semibold space-y-5">
+                    <p>Reception</p>
+                    <p>MON .... 11:00 - 3:00 pm</p>
+                    <p>FRY .... 11:00 - 3:00 pm</p>
+                    <p>SAT .... 11:00 - 3:00 pm</p>
+                    <p>SUN .... 11:00 - 3:00 pm</p>
+                </div>
+
+                <div className="bg-[url('/image/lunch.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-[360px] ml-8">
+                   <div className='relative bg-black opacity-50 h-[260px]'></div>
+                    <p className='absolute top-24 left-32 font-semibold text-white text-3xl'>Lunch</p>
+                </div>
+
+                <div className="bg-[url('/image/spa.jpg')] bg-contain bg-no-repeat lg:w-[195px] h-[260px] relative">
+                <div className=' bg-black opacity-50 h-[260px]'></div>
+                    <p className='absolute top-24 left-20 font-semibold text-white text-xl'>SPA</p>
+                </div>
+            </div>
+
         </div>
     );
 };
