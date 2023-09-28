@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 const Footer = () => {
 
-    const handleSubmit = event =>{
+    const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -19,7 +19,7 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="footer p-10 bg-black text-neutral-content">
+            <footer className="footer p-10 bg-[#884A39] text-neutral-content">
                 <aside>
                     <h6 className='text-5xl font-bold'>TRAVELLING</h6>
                     <p>TRAVELLING Industries Ltd.<br />Providing reliable tech since 1992</p>
@@ -64,7 +64,11 @@ const Footer = () => {
                         </div>
                     </fieldset>
                 </form>
-
+            </footer>
+            <footer className="footer footer-center p-4 bg-[#E9B384] text-base-content">
+                <aside>
+                    <p>Copyright © 2023 - All right reserved by TRAVELLING Industries Ltd</p>
+                </aside>
             </footer>
         </>
     );
