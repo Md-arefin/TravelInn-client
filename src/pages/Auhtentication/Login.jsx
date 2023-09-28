@@ -19,11 +19,39 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
-        console.log(data);
+        setError('');
+        console.log(data)
+        signIn(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json(saveUser))
+                    .then(() => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Login Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    })
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                console.log(err.message)
+                setError(err.message)
+            })
     }
 
-     // googleSignIn
-     const handleGoogle = () => {
+    // googleSignIn
+    const handleGoogle = () => {
         setError('')
 
         signInWithGoogle()
@@ -40,7 +68,7 @@ const Login = () => {
                     body: JSON.stringify(saveUser)
                 })
                     .then(res => res.json(saveUser))
-                    .then( () => {
+                    .then(() => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
