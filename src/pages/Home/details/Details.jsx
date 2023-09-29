@@ -15,9 +15,9 @@ const Details = () => {
                 </div>
 
                 <div className='lg:w-1/2 lg:mt-20'>
-                    <p className='uppercase text-neutral-600 text-sm'>best stay in the town</p>
+                    <p className='uppercase text-neutral-600 font-semibold text-sm'>best stay in the town</p>
                     <h3 className='text-neutral-600 text-6xl my-10'>
-                        Reserve a <br />
+                        Reserve a 
                         Cool Suite
                     </h3>
                     <p className='text-neutral-600 text-lg '>

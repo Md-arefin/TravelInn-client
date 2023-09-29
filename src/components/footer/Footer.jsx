@@ -1,5 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import logo from '/image/globe.png';
 
 const Footer = () => {
 
@@ -19,9 +20,13 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="footer p-10 bg-[#884A39] text-neutral-content">
+            <footer className="footer p-10 bg-[#895446] text-neutral-content">
                 <aside>
-                    <h6 className='text-5xl font-bold'>TRAVELLING</h6>
+                    <div className='flex items-center gap-5'>
+                        <img src={logo} className="w-10" alt="" />
+                        <h6 className='text-5xl font-bold text-black'>TRAVELLING</h6>
+                    </div>
+
                     <p>TRAVELLING Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </aside>
                 <nav>
@@ -65,7 +70,7 @@ const Footer = () => {
                     </fieldset>
                 </form>
             </footer>
-            <footer className="footer footer-center p-4 bg-[#E9B384] text-base-content">
+            <footer className="footer footer-center p-4 bg-[#ca9e78] text-base-content">
                 <aside>
                     <p>Copyright © 2023 - All right reserved by TRAVELLING Industries Ltd</p>
                 </aside>
