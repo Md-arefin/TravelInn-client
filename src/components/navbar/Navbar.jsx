@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link to='/about'>About</Link>
         </li>
         <li className='lg:text-lg font-semibold'>
-            <Link to='/'>Contact</Link>
+            <Link to='/contact'>Contact</Link>
         </li>
     </>
 

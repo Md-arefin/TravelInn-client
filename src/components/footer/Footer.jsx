@@ -61,7 +61,7 @@ const Footer = () => {
                     <header className="footer-title">Newsletter</header>
                     <fieldset className="form-control w-80">
                         <label className="label">
-                            <span className="label-text text-neutral-500">Enter your email address</span>
+                            <span className="label-text text-white">Enter your email address</span>
                         </label>
                         <div className="relative">
                             <input type="text" placeholder="username@site.com" name="email" className="input text-black w-full pr-16" />

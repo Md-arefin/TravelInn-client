@@ -3,7 +3,7 @@ import tickImg from "/image/icons/checked.png"
 
 const AlOffers = () => {
     return (
-        <div className='lg:my-32'>
+        <div className='lg:mt-32'>
             <div className='w-3/4 mx-auto mb-20'>
                 <p className='uppercase text-neutral-600 font-semibold text-sm'>all offers</p>
                 <h3 className='text-neutral-600 text-6xl my-10'>

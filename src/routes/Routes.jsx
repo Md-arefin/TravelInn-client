@@ -6,6 +6,7 @@ import Login from '../pages/Auhtentication/Login';
 import SignUp from '../pages/Auhtentication/SignUp';
 import Home from '../pages/Home/Home/Home';
 import About from '../pages/About/About/About';
+import Contact from '../pages/Contact/Contact/Contact';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
       },
     ],
   },
