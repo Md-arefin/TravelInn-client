@@ -4,7 +4,7 @@ import img2 from "/image/circle-2.png";
 
 const Reception = () => {
     return (
-        <div className='lg:my-32'>
+        <div className='lg:mt-32'>
             <div className='flex flex-col md:flex-row gap-28 relative justify-center'>
                 <div className=' flex flex-row items-center border-2 py-6 gap-5 lg:w-[35%]'>
                     <div >

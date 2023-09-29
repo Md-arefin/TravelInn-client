@@ -115,6 +115,7 @@ const SignUp = () => {
                             timer: 1500
                         })
                         // navigate(from, { replace: true })
+                        navigate('/')
                     })
             })
             .catch(error => {
@@ -190,7 +191,7 @@ const SignUp = () => {
 
                 <div className="flex justify-center my-10">
 
-                    <button type="submit" className="bg-slate-500 w-1/2 p-1 rounded-md border-2 text-white border-black flex justify-evenly items-center">Submit <BiLogIn /></button>
+                    <button type="submit" className="bg-[#a98467] btn w-1/2 p-1 rounded-md border-2 text-white border-black flex justify-evenly items-center">Submit <BiLogIn /></button>
                 </div>
 
                 <div className='border-2 w-3/4 mx-auto my-5'></div>

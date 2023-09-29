@@ -6,7 +6,7 @@ const AlOffers = () => {
         <div className='lg:mt-32'>
             <div className='w-3/4 mx-auto mb-20'>
                 <p className='uppercase text-neutral-600 font-semibold text-sm'>all offers</p>
-                <h3 className='text-neutral-600 text-6xl my-10'>
+                <h3 className='text-neutral-600 text-6xl mt-10'>
                     Relax on Vacation
                 </h3>
 
