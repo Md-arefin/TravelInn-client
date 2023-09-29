@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Parallax = () => {
     return (
         <div className='my-32'>
-            <div className="relative bg-[url('/image/parallax.jpg')] bg-cover bg-no-repeat h-[800px] bg-fixed">
-                <div className=' bg-black opacity-50 h-[800px]'></div>
+            <div className="relative bg-[url('/image/parallax.jpg')] bg-cover bg-no-repeat h-[850px] bg-fixed">
+                <div className=' bg-black opacity-50 h-[850px]'></div>
                 <div className='absolute text-white lg:top-20 w-full'>
                     <p className='text-center uppercase'>our room prices</p>
 
