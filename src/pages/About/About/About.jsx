@@ -1,4 +1,6 @@
 import React from 'react';
+import Gallery from '../../Home/Gallery/Gallery';
+import AlOffers from '../AlOffers/AlOffers';
 import HeaderSection from '../Header/HeaderSection';
 import Inclusive from '../Inclusive/Inclusive';
 
@@ -7,6 +9,8 @@ const About = () => {
         <div>
             <HeaderSection />
             <Inclusive />
+            <Gallery />
+            <AlOffers />
         </div>
     );
 };
