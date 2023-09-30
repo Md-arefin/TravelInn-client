@@ -15,9 +15,9 @@ const HotelEvents = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto '>
 
-                <div className='lg:ml-[300px]'>
-                    <div className="bg-[url('/image/abstract.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-96 mb-5">
-                        <div className='bg-[#895446] h-[260px] opacity-70  lg:w-96'>
+                <div className='lg:ml-[345px]'>
+                    <div className="bg-[url('/image/abstract.jpg')] bg-cover bg-no-repeat h-[270px] relative lg:w-96 mb-5">
+                        <div className='bg-[#895446] h-[270px] opacity-70  lg:w-96'>
                         </div>
 
                         <div className='absolute top-1 py-5 px-5 text-white'>
@@ -75,23 +75,23 @@ const HotelEvents = () => {
                     </div>
                 </div>
 
-                <div className='lg:ml-[-60px]'>
-                    <div className="bg-[url('/image/123.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-96">
-                        <div className='bg-black h-[260px] opacity-40 '>
+                <div className='lg:ml-[-110px]'>
+                    <div className="bg-[url('/image/123.jpg')] bg-cover bg-no-repeat h-[270px] relative lg:w-96">
+                        <div className='bg-black h-[270px] opacity-40 '>
                         </div>
-                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-white pl-2'>Gala Dinner</p>
+                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-[#895446] pl-2'>Gala Dinner</p>
                     </div>
 
-                    <div className="bg-[url('/image/456.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-96 my-7">
+                    <div className="bg-[url('/image/456.jpg')] bg-cover bg-no-repeat h-[270px] relative lg:w-96 my-4">
                         <div className='bg-black h-[260px] opacity-40 '>
                         </div>
-                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-white pl-2'> Wedding Receptions</p>
+                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-[#895446] pl-2'> Wedding Receptions</p>
                     </div>
 
                     <div className="bg-[url('/image/food-2.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-96 mt-5">
                         <div className='bg-black h-[260px] opacity-40 '>
                         </div>
-                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-white pl-2'> Adventure Outdoors</p>
+                        <p className='absolute top-52 text-white font-semibold text-2xl left-5 border-l-4 border-[#895446] pl-2'> Adventure Outdoors</p>
                     </div>
                 </div>
 

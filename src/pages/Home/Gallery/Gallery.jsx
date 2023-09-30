@@ -1,13 +1,29 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import { Link } from 'react-router-dom';
 
 const Gallery = () => {
     return (
         <div className='my-32'>
-            <p className='text-center text-7xl'>This is Gallery</p>
-            <div className='w-96 mx-auto mt-10'>
-                <img src="https://i.ibb.co/6sdK3h6/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.jpg" alt="" />
+            <Swiper
+                // autoplay={{
+                //     delay: 3500,
+                //     disableOnInteraction: false,
+                // }}
+                // modules={[Autoplay]}
+                className="mySwiper">
+                <SwiperSlide>
+                    <div className="w-full">
+                        {/* <div className="relative bg-black opacity-50 h-[750px]"></div> */}
+                        <div className='w-full '>
+                          
+                        </div>
+                    </div>
+                </SwiperSlide>
 
-            </div>
+            </Swiper>
         </div>
     );
 };

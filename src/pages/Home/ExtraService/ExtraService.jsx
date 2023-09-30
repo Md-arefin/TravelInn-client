@@ -24,14 +24,14 @@ const ExtraService = () => {
                         Order now
                     </Link>
 
-                    <div className='flex flex-col md:flex-row absolute gap-10 mt-10 z-10'>
-                        <img src="https://i.ibb.co/6sdK3h6/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.jpg" className="w-40" alt="" />
+                    <div className='flex flex-col md:flex-row absolute gap-10 mt-10'>
+                        <img src="https://i.ibb.co/6sdK3h6/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.jpg" className="w-48" alt="" />
 
-                        <img src="https://i.ibb.co/hcnhbX2/visualsofdana-T5p-L6ci-En-I-unsplash.jpg" className="w-40" alt="" />
+                        <img src="https://i.ibb.co/hcnhbX2/visualsofdana-T5p-L6ci-En-I-unsplash.jpg" className="w-48" alt="" />
 
-                        <img src="https://i.ibb.co/K98tR5v/parallax6.jpg" className="w-40" alt="" />
+                        <img src="https://i.ibb.co/K98tR5v/parallax6.jpg" className="w-48" alt="" />
 
-                        <img src="https://i.ibb.co/9Wp8GqV/rhema-kallianpur-uoc-Sn-WMhn-As-unsplash.jpg" className="w-40" alt="" />
+                        <img src="https://i.ibb.co/9Wp8GqV/rhema-kallianpur-uoc-Sn-WMhn-As-unsplash.jpg" className="w-48" alt="" />
                        
                     </div>
                 </div>

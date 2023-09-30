@@ -97,7 +97,7 @@ const AlOffers = () => {
             <div className="bg-[url('/image/bed.jpg')] bg-cover bg-no-repeat h-[560px] relative">
                 <div className='bg-black h-[560px] opacity-40 '>
                 </div>
-                <div className='absolute lg:top-40 ml-10 w-full'>
+                <div className='absolute lg:top-40 lg:ml-48 lg:w-10/12'>
                     <div className='text-white lg:ml-72'>
                         <p className=' font-bold text-5xl lg:ml-96'>Lunch & Dinner</p>
                         <p className=' my-5 text-lg w-3/4'>

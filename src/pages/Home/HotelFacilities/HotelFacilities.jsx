@@ -28,6 +28,7 @@ const HotelFacilities = () => {
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-3/4 gap-5 lg:ml-[350px] mt-16'>
+                
                 <div className="bg-[#884A39] bg-opacity-75 text-center text-white py-5 font-semibold space-y-5">
                     <p className='text-2xl'>Reception</p>
                     <p>MON .... 11:00 - 3:00 pm</p>
@@ -36,14 +37,14 @@ const HotelFacilities = () => {
                     <p>SUN .... 11:00 - 3:00 pm</p>
                 </div>
 
-                <div className="bg-[url('/image/lunch.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-[360px] ml-8">
+                <div className="bg-[url('/image/lunch.jpg')] bg-cover bg-no-repeat h-[260px] relative lg:w-[360px]">
                    <div className='relative bg-black opacity-50 h-[260px]'></div>
-                    <p className='absolute top-24 left-32 font-semibold text-white text-3xl'>Lunch</p>
+                    <p className='absolute top-24 left-32 font-semibold text-white text-4xl'>Lunch</p>
                 </div>
 
-                <div className="bg-[url('/image/spa.jpg')] bg-contain bg-no-repeat lg:w-[195px] h-[260px] relative">
+                <div className="bg-[url('/image/spa.jpg')] bg-cover bg-no-repeat lg:w-[360px] h-[260px] relative lg:ml-[-100px]">
                 <div className=' bg-black opacity-50 h-[260px]'></div>
-                    <p className='absolute top-24 left-20 font-semibold text-white text-xl'>Spa</p>
+                    <p className='absolute top-24 left-40 font-semibold text-white text-4xl'>Spa</p>
                 </div>
             </div>
 

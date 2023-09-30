@@ -14,7 +14,7 @@ const Details = () => {
                     </div>
                 </div>
 
-                <div className='lg:w-1/2 lg:mt-20'>
+                <div className='lg:w-1/2 lg:mt-20 lg:mr-16 lg:pr-20'>
                     <p className='uppercase text-neutral-600 font-semibold text-sm'>best stay in the town</p>
                     <h3 className='text-neutral-600 text-6xl my-10'>
                         Reserve a 

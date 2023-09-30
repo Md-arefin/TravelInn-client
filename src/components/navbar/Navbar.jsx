@@ -44,7 +44,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex items-center '>
-                    <a className="btn btn-ghost normal-case font-bold text-3xl">Travelling</a>
+                    <Link to='/' className="btn btn-ghost normal-case font-bold text-3xl">Travelling</Link>
                     <img src={logo} className="w-10" alt="" />
                 </div>
             </div>
