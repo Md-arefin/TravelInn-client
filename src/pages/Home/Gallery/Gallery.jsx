@@ -9,11 +9,11 @@ const Gallery = () => {
     return (
         <div className='my-32'>
             <Swiper
-                // autoplay={{
-                //     delay: 3500,
-                //     disableOnInteraction: false,
-                // }}
-                // modules={[Autoplay]}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                modules={[Autoplay]}
                 className="mySwiper">
                 {/* 1 slide */}
                 <SwiperSlide>
@@ -228,8 +228,8 @@ const Gallery = () => {
                                             </p>
                                         </div>
                                     </div>
-                                </div> 
-                             </div>
+                                </div>
+                            </div>
 
                         </div>
                         {/* grid ends */}
@@ -340,15 +340,15 @@ const Gallery = () => {
                             </div>
 
                             {/* 4th column */}
-                            <div className="bg-[url('/image/parallax.jpg')] bg-cover bg-no-repeat lg:h-[580px] lg:ml-[20px]">
+                            <div className="bg-[url('/image/darshan-patel-DfzzpBRZCT0-unsplash.jpg')] bg-contain bg-no-repeat lg:h-[580px] lg:ml-[20px]">
                             </div>
                         </div>
                         {/* grid ends */}
                     </div>
                 </SwiperSlide>
-                
-                 {/* 4 slide */}
-                 <SwiperSlide>
+
+                {/* 4 slide */}
+                <SwiperSlide>
                     <div className="w-full">
 
                         {/* grid start*/}
@@ -360,7 +360,7 @@ const Gallery = () => {
                             {/* 2nd column */}
                             <div className='lg:ml-[25px]'>
                                 {/* 2nd column 1st pic */}
-                                <div className="bg-[url('/image/g-4.jpg')] bg-cover bg-no-repeat lg:w-[580px] h-[270px] relative mb-5 "></div>
+                                <div className="bg-[url('/image/parallax.jpg')] bg-cover bg-no-repeat lg:w-[580px] h-[270px] relative mb-5 "></div>
 
                                 <div className='flex justify-evenly gap-5 lg:ml-[130px]'>
                                     {/* 2nd column 2nd pic */}
@@ -451,8 +451,8 @@ const Gallery = () => {
                                             </p>
                                         </div>
                                     </div>
-                                </div> 
-                             </div>
+                                </div>
+                            </div>
 
                         </div>
                         {/* grid ends */}
