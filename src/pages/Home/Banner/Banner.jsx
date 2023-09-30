@@ -9,7 +9,7 @@ const Banner = () => {
         <div>
             <Swiper
                 autoplay={{
-                    delay: 3500,
+                    delay: 5500,
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}

@@ -10,7 +10,7 @@ const Gallery = () => {
         <div className='my-32'>
             <Swiper
                 autoplay={{
-                    delay: 2500,
+                    delay: 4500,
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
