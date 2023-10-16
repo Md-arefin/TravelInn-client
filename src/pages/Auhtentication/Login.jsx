@@ -25,7 +25,10 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                const saveUser = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email
+                }
                 fetch('http://localhost:5000/add-users', {
                     method: "POST",
                     headers: {
@@ -59,7 +62,11 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                const saveUser = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email,
+                    imgURL: loggedUser.photoURL,
+                }
                 fetch('http://localhost:5000/add-users', {
                     method: "POST",
                     headers: {
@@ -103,7 +110,7 @@ const Login = () => {
                         className="w-full rounded-md"
                         type="email"
                         placeholder='Enter your email...'
-                        {...register("email")} required/>
+                        {...register("email")} required />
                 </div>
 
                 <div className="flex flex-col gap-3  mb-2">
@@ -112,7 +119,7 @@ const Login = () => {
                         className="w-full rounded-md"
                         type="password"
                         placeholder='Enter your password...'
-                        {...register("password")} required/>
+                        {...register("password")} required />
                 </div>
 
                 <p className='text-center'>New to Travelling? <Link to='/sign-up' className='underline font-semibold'> Please Sign-up</Link></p>

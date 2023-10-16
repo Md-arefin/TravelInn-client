@@ -23,6 +23,9 @@ const Navbar = () => {
         <li className='lg:text-lg font-semibold'>
             <Link to='/contact'>Contact</Link>
         </li>
+        <li>
+            <Link to="/dashboard" className='lg:text-lg font-semibold'>Dashboard</Link>
+        </li>
     </>
 
     const handleLogout = () => {
