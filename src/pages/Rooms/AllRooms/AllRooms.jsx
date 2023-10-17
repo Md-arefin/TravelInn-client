@@ -18,7 +18,7 @@ const AllRooms = () => {
     return (
         <div className='lg:my-32'>
             <div className='grid grid-cols-1 md:grid-cols-2 w-full mx-auto'>
-                <div>
+                <div className='border-2'>
                     <div className='bg-black h-96 w-96 mx-auto'>
                         <p className='text-white text-3xl text-center pt-40'>TODO: Date Rage</p>
                     </div>
@@ -53,15 +53,12 @@ const AllRooms = () => {
                 </div>
 
                 {/* data fetch */}
-                <div className='flex flex-col md:flex-row gap-5 justify-center mb-20'>
-
-                    <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 lg:mt-20 px-4'>
-                        {
-                            products.map(product =>
-                                <Details key={product._id} product={product} />
-                            )
-                        }
-                    </div>
+                <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 lg:mt-20 px-4'>
+                    {
+                        products.map(product =>
+                            <Details key={product._id} product={product} />
+                        )
+                    }
                 </div>
             </div>
         </div>

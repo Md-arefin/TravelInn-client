@@ -14,6 +14,7 @@ import AllRooms from '../pages/Rooms/AllRooms/AllRooms';
 import AddRoom from '../pages/Dashboard/Admin/AddRoom/AddRoom';
 import ALLRooms from '../pages/Dashboard/Admin/AllRooms/AllRooms';
 import EditRoom from '../pages/Dashboard/Admin/EditRoom/EditRoom';
+import SingleRoom from '../pages/Rooms/SingleRoom/SingleRoom';
 
 const router = createBrowserRouter([
   {
@@ -26,16 +27,21 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: "/about",
+        path: "about",
         element: <About />
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <Contact />
       },
       {
-        path: "/rooms",
+        path: "rooms",
         element: <Rooms />
+      },
+      {
+        path: "room/:id",
+        element: <SingleRoom />,
+        loader: ({ params }) => fetch(`http://localhost:5000/room/${params.id}`),
       },
     ],
   },
@@ -44,7 +50,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
 
-      
+
       // Admin routes
       {
         path: "/dashboard",
