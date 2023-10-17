@@ -13,6 +13,7 @@ import AllUsers from '../pages/Dashboard/Admin/AllUsers/AllUsers';
 import AllRooms from '../pages/Rooms/AllRooms/AllRooms';
 import AddRoom from '../pages/Dashboard/Admin/AddRoom/AddRoom';
 import ALLRooms from '../pages/Dashboard/Admin/AllRooms/AllRooms';
+import EditRoom from '../pages/Dashboard/Admin/EditRoom/EditRoom';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
       {
         path: "AllRooms",
         element: <ALLRooms />,
+      },
+      {
+        path: "edit-room/:id",
+        element: <EditRoom />,
+        loader: ({ params }) => fetch(`http://localhost:5000/room/${params.id}`),
       },
       {
         path: "AddRoom",

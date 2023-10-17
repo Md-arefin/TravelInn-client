@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import Details from '../../../components/Details/Details';
 
 const AllRooms = () => {
+
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/all-rooms')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setProducts(data);
+            })
+    }, [])
+
     return (
         <div className='lg:my-32'>
             <div className='grid grid-cols-1 md:grid-cols-2 w-full mx-auto'>
@@ -40,8 +53,15 @@ const AllRooms = () => {
                 </div>
 
                 {/* data fetch */}
-                <div>
-                    <p className=' text-3xl pt-40'>TODO: Fetch all rooms data</p>
+                <div className='flex flex-col md:flex-row gap-5 justify-center mb-20'>
+
+                    <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 lg:mt-20 px-4'>
+                        {
+                            products.map(product =>
+                                <Details key={product._id} product={product} />
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

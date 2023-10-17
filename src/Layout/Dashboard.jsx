@@ -7,12 +7,12 @@ const Dashboard = () => {
 
     const { user } = useContext(AuthContext);
 
-    const isAdmin = true;
+    // const isAdmin = true;
 
-    // const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
 
-    // console.log(isAdmin?.admin);
-    console.log(isAdmin);
+    console.log(isAdmin?.admin);
+    // console.log(isAdmin);
 
     const userNavItems = <>
 
@@ -134,7 +134,7 @@ const Dashboard = () => {
                 <div>
                     <ul>
                         {
-                            isAdmin && adminNavItems || userNavItems
+                            isAdmin?.admin && adminNavItems || userNavItems
                         }
                     </ul>
                 </div>
