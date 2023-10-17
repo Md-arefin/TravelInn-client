@@ -7,42 +7,40 @@ const SingleRoom = () => {
 
     const [isAdmin] = useAdmin();
     const { user } = useContext(AuthContext);
-    const room = useLoaderData();
+    const hotel = useLoaderData();
 
-    const { category, sales, dressTitle, image, length, price, reviews, size, stock, style, type, _id } = room[0];
+    const { _id, images, name, location, amenities, price_per_night, description
+    } = hotel[0];
 
-    console.log(room);
+    console.log(hotel);
 
     return (
         <div>
-            <div className='flex flex-col md:flex-row items-center justify-center gap-10 mb-10'>
-                <div className='lg:w-[25%]'>
-                    <figure><img src={image} alt={dressTitle} /></figure>
+                <div className='lg:w-[50vw]'>
+                    <figure><img src={images[2]} alt={name} /></figure>
                 </div>
+            <div className='flex flex-col md:flex-row items-center justify-center gap-10 mb-10'>
 
                 <div className="card bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <h2 className="card-title lg:text-4xl">{dressTitle}</h2>
+                        <h2 className="card-title lg:text-4xl">{name}</h2>
 
-                        <p className='lg:text-xl'> Category: {category}</p>
-                        <p className='lg:text-xl'>Length: {length}</p>
-                        <p className='lg:text-xl'>stock: {stock}</p>
-                        <p className='lg:text-xl'>style: {style}</p>
+                        <p className='lg:text-xl'> Category: {description}</p>
+                        <p className='lg:text-xl'>Length: {location}</p>
+                        {/* <p className='lg:text-xl'>stock: {amenities}</p> */}
                         <p className='lg:text-xl w-48 grid grid-cols-4'>size:
-                            <span className='lg:text-xl w-48 grid grid-cols-4 '>
-                                {size?.map((sz, i) => <p className='font-sans' key={i}>
+                            <span className='lg:text-xl '>
+                                {amenities?.map((sz, i) => <p className='font-sans' key={i}>
                                     {sz}
                                 </p>)}
                             </span>
                         </p>
 
-                        {
-                            sales && <p className='lg:text-xl'>Sales: {sales} %</p> || ""
-                        }
+                       
 
                         <p className='lg:text-xl flex items-center justify-between'>Price:
                             <div>
-                                $<span className='font-sans font-bold'> {price}</span>
+                                $<span className='font-sans font-bold'> {price_per_night}</span>
                             </div>
                         </p>
 
@@ -56,8 +54,7 @@ const SingleRoom = () => {
 
                         {/* -- */}
 
-                        <div className="card-actions justify-between mt-5">
-                            <button onClick={() => handleAddToFavourite(_id)} className="btn bg-[#041C44] hover:bg-[#09A4DB] hover:text-black text-white" disabled={isAdmin?.admin == true}>Add to favourite</button>
+                        <div className="card-actions justify-center mt-5">
 
                             <button onClick={() => handleAddToCart(_id)} className="btn bg-[#09A4DB] hover:bg-[#041C44] hover:text-white w-[184px] text-black" disabled={isAdmin?.admin === true}>Add to cart</button>
                         </div>
