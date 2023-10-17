@@ -4,25 +4,26 @@ import Details from '../../../components/Details/Details';
 
 const AllRooms = () => {
 
-    const [products, setProducts] = useState([])
+    const [hotels, setHotels] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/all-rooms')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setProducts(data);
+                setHotels(data);
             })
     }, [])
 
     return (
-        <div className='lg:my-32'>
-            <div className='grid grid-cols-1 md:grid-cols-2 w-full mx-auto'>
-                <div className='border-2'>
-                    <div className='bg-black h-96 w-96 mx-auto'>
+        <div className='md:my-10 lg:my-10'>
+            <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
+
+                <div className='w-96 h-96 lg:ml-14 lg:sticky top-10'>
+                    <div className='bg-slate-400 h-96 rounded-xl mx-auto '>
                         <p className='text-white text-3xl text-center pt-40'>TODO: Date Rage</p>
                     </div>
-                    <div className='h-96 w-96 mx-auto space-y-20'>
+                    <div className='w-96 mx-auto space-y-20 mt-10'>
                         <div>
                             <details className="dropdown cursor-pointer">
                                 <summary className=" font-semibold text-center text-xl btn border-none hover:bg-transparent">Services:
@@ -53,10 +54,10 @@ const AllRooms = () => {
                 </div>
 
                 {/* data fetch */}
-                <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 lg:mt-20 px-4'>
+                <div className='w-2/2 grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        products.map(product =>
-                            <Details key={product._id} product={product} />
+                        hotels.map(hotel =>
+                            <Details key={hotel._id} hotel={hotel} />
                         )
                     }
                 </div>
