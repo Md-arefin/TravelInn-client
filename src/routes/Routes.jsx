@@ -15,6 +15,9 @@ import AddRoom from '../pages/Dashboard/Admin/AddRoom/AddRoom';
 import ALLRooms from '../pages/Dashboard/Admin/AllRooms/AllRooms';
 import EditRoom from '../pages/Dashboard/Admin/EditRoom/EditRoom';
 import SingleRoom from '../pages/Rooms/SingleRoom/SingleRoom';
+import Cart from '../pages/Dashboard/Users/Cart/Cart';
+import PaidHistory from '../pages/Dashboard/Users/PaidHistory/PaidHistory';
+import UserReview from '../pages/Dashboard/Users/UserReview/UserReview';
 
 const router = createBrowserRouter([
   {
@@ -50,12 +53,26 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
 
-
-      // Admin routes
+      // user routes
       {
         path: "/dashboard",
-        element: <AllUsers />,
+        element: <Cart />,
       },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "history",
+        element: <PaidHistory />,
+      },
+      {
+        path: "userReview",
+        element: <UserReview />,
+      },
+
+
+      // Admin routes
       {
         path: "AllUsers",
         element: <AllUsers />,

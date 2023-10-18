@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAdmin from '../../../components/Hooks/useAdmin';
+import useCart from '../../../components/Hooks/useCart';
 import { AuthContext } from '../../../provider/AuthProvider';
 import RoomSlider from './RoomSlider/RoomSlider';
 
@@ -9,6 +11,8 @@ const SingleRoom = () => {
     const [isAdmin] = useAdmin();
     const { user } = useContext(AuthContext);
     const hotel = useLoaderData();
+    const [totalAmount, setTotalAmount] = useState(1);
+    const [, cartRefetch] = useCart();
 
     console.log(isAdmin?.admin);
 
@@ -16,6 +20,58 @@ const SingleRoom = () => {
     } = hotel[0];
 
     console.log(hotel);
+    const handleAddToCart = (id) => {
+
+        const cartItem = {
+            productId:  _id,
+            UserEmail: user?.email,
+            images, 
+            name, 
+            location, 
+            amenities, 
+            price_per_night, 
+            description,
+            totalAmount
+        }
+
+        if (user) {
+            fetch("http://localhost:5000/carts", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(cartItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        cartRefetch();   // update ta cart number
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: "Your room add to cart",
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        } else {
+            Swal.fire({
+                title: 'Please Login!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'login!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // TODO: Private Route
+                }
+            })
+        }
+
+    }
+
 
     return (
         <div className='mb-20'>

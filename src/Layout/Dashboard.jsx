@@ -26,7 +26,7 @@ const Dashboard = () => {
         </li>
 
         <li>
-            <NavLink to="/dashboard/my-cart" className='lg:text-xl btn flex justify-between items-center my-2'>
+            <NavLink to="/dashboard/cart" className='lg:text-xl btn flex justify-between items-center my-2'>
                 <p>
                     My cart
                 </p>
@@ -35,16 +35,7 @@ const Dashboard = () => {
         </li>
 
         <li>
-            <NavLink to="/dashboard/MyWhishList" className='lg:text-xl btn flex justify-between items-center my-2'>
-                <p>
-                    My WhishList
-                </p>
-                <img className='w-8' src=" " alt="" />
-            </NavLink>
-        </li>
-
-        <li>
-            <NavLink to="/dashboard/purchase" className='lg:text-xl btn flex justify-between items-center my-2'>
+            <NavLink to="/dashboard/history" className='lg:text-xl btn flex justify-between items-center my-2'>
                 <p>
                     Paid History
                 </p>
@@ -53,9 +44,9 @@ const Dashboard = () => {
         </li>
 
         <li>
-            <NavLink to="/dashboard/review" className='lg:text-xl btn flex justify-between items-center my-2'>
+            <NavLink to="/dashboard/userReview" className='lg:text-xl btn flex justify-between items-center my-2'>
                 <p>
-                    Review
+                    Review us
                 </p>
                 <img className='w-8' src=" " alt="" />
             </NavLink>
