@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useAdmin from '../../../components/Hooks/useAdmin';
 import { AuthContext } from '../../../provider/AuthProvider';
+import RoomSlider from './RoomSlider/RoomSlider';
 
 const SingleRoom = () => {
 
@@ -16,9 +17,10 @@ const SingleRoom = () => {
 
     return (
         <div>
-                <div className='lg:w-[50vw]'>
+                {/* <div className='lg:w-[50vw]'>
                     <figure><img src={images[2]} alt={name} /></figure>
-                </div>
+                </div> */}
+                <RoomSlider images={images}/>
             <div className='flex flex-col md:flex-row items-center justify-center gap-10 mb-10'>
 
                 <div className="card bg-base-100 shadow-xl">
