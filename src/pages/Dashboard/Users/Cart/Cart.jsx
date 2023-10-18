@@ -50,6 +50,7 @@ const Cart = () => {
                             <th>
                             </th>
                             <th className='text-center'>Hotels Name</th>
+                            <th className='text-center'>Hotels Locations</th>
                             <th className='text-center'>Total days</th>
                             <th className='text-center'>Price per night</th>
                             <th className='text-center'>Total Price</th>
@@ -75,15 +76,19 @@ const Cart = () => {
                                     </td>
 
                                     <td>
+                                        <div className="font-semibold text-xl">{cart.location}</div>
+                                    </td>
 
+                                    <td>
+                                        
                                     </td>
 
                                     <td className='text-xl text-right'>
-                                    <span className='font-bold text-2xl'>$</span>{cart.price_per_night}
+                                        <span className='font-bold text-2xl'>$</span>{cart.price_per_night}
                                     </td>
 
                                     <td className='text-xl text-right'>
-                                       <span className='font-bold text-2xl'>$</span>{cart.totalAmount}
+                                        <span className='font-bold text-2xl'>$</span>{cart.totalAmount}
                                     </td>
                                     <td className='text-center'>
                                         <div onClick={() => handleDeleteItems(cart._id)} className='btn bg-red-600 text-white hover:text-black'>

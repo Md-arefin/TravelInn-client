@@ -16,7 +16,7 @@ const PaidHistory = () => {
                 setPaidItems(data)
             })
     }, [user]);
-    
+
     return (
         <div className=' pt-10'>
             <p className='text-center text-5xl my-10'>Purchase Items</p>
@@ -29,11 +29,13 @@ const PaidHistory = () => {
                         <tr className='text-lg md:text-xl bg-gray-300 text-black'>
                             <th>
                             </th>
-                            <th>Items</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Transaction Id</th>
-                            <th>Add Review</th>
+                            <th className='text-center'>Hotels Name</th>
+                            <th className='text-center'>Hotels Locations</th>
+                            <th className='text-center'>Total days</th>
+                            <th className='text-center'>Price per night</th>
+                            <th className='text-center'>Total</th>
+                            <th className='text-center'>Transaction Id</th>
+                            <th className='text-center'>Add Review</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,9 +43,11 @@ const PaidHistory = () => {
                         {
                             PaidItems.map((PaidItem, i) =>
                                 <tr key={PaidItem._id}>
+
                                     <th className='font-serif text-xl'>
                                         {i + 1}
                                     </th>
+
                                     <td>
                                         {
                                             PaidItem.carts.map((items, i) =>
@@ -54,17 +58,34 @@ const PaidHistory = () => {
                                     <td>
                                         {
                                             PaidItem.carts.map((items, i) =>
-                                                <p key={i} className="text-lg flex flex-col items-center py-4"> {items.quantity}</p>)
+                                                <p key={i} className="text-lg flex flex-col items-center py-4"> {items.location}</p>)
                                         }
                                     </td>
 
+
                                     <td>
-                                        <p className='text-xl flex items-center justify-between my-5 font-serif font-bold'> $ {PaidItem.price}</p>
+                                        {
+                                            PaidItem.carts.map((items, i) =>
+                                                <p key={i} className="text-lg flex flex-col items-center py-4"> {items.location}</p>)
+                                        }
+                                    </td>
+
+
+                                    <td>
+                                        <p className='text-xl flex items-center justify-end my-5 font-serif font-bold'>$  {PaidItem.price}</p>
+                                    </td>
+
+                                    <td>
+                                        {
+                                            PaidItem.carts.map((items, i) =>
+                                                <p key={i} className="text-xl flex items-center justify-end my-5 font-serif font-bold"> $ {items.totalAmount}</p>)
+                                        }
                                     </td>
 
                                     <td>
                                         <p className='text-xl flex items-center justify-between'>    {PaidItem.transactionID}</p>
                                     </td>
+
                                     <td>
                                         {
                                             PaidItem.carts.map((items, i) =>
