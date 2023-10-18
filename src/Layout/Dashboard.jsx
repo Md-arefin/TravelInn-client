@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
 
     console.log(isAdmin?.admin);
-    // console.log(isAdmin);
+    console.log(isAdmin);
 
     const userNavItems = <>
 

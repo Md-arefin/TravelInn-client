@@ -17,9 +17,9 @@ const RoomSlider = ({ images }) => {
                 {
                     images?.map((image, i) =>
                         <SwiperSlide key={i}>
-                            <div className="w-full h-[750px]">
+                            <div className="w-full h-96 lg:h-[750px]">
                                 <figure>
-                                    <img src={image} className='object-contain h-[750px] w-full' alt='' />
+                                    <img src={image} className='object-contain h-96 lg:h-[750px] w-full' alt='' />
                                 </figure>
                             </div>
                         </SwiperSlide>

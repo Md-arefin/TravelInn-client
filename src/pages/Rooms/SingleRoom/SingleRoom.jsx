@@ -10,55 +10,60 @@ const SingleRoom = () => {
     const { user } = useContext(AuthContext);
     const hotel = useLoaderData();
 
+    console.log(isAdmin?.admin);
+
     const { _id, images, name, location, amenities, price_per_night, description
     } = hotel[0];
 
     console.log(hotel);
 
     return (
-        <div>
-                {/* <div className='lg:w-[50vw]'>
-                    <figure><img src={images[2]} alt={name} /></figure>
-                </div> */}
-                <RoomSlider images={images}/>
-            <div className='flex flex-col md:flex-row items-center justify-center gap-10 mb-10'>
+        <div className='mb-20'>
+            <RoomSlider images={images} />
+            <div className='flex flex-col md:flex-row items-center justify-center gap-10'>
 
-                <div className="card bg-base-100 shadow-xl">
+                <div className="card bg-base-100 lg:w-1/2 mt-10 shadow-xl">
                     <div className="card-body">
-                        <h2 className="card-title lg:text-4xl">{name}</h2>
+                        <h2 className="text-center font-bold lg:text-4xl">{name}</h2>
 
-                        <p className='lg:text-xl'> Category: {description}</p>
-                        <p className='lg:text-xl'>Length: {location}</p>
-                        {/* <p className='lg:text-xl'>stock: {amenities}</p> */}
-                        <p className='lg:text-xl w-48 grid grid-cols-4'>size:
+                        <p className='lg:text-xl'>
+                            <span className='font-semibold text-xl'>
+                                Description:
+                            </span> {description}</p>
+                        <p className='lg:text-xl'>
+                            <span className='font-semibold text-xl'>
+                                Location:
+                            </span> {location}.</p>
+                        <p className='lg:text-xl'>
+                            <span className='font-semibold text-xl'>
+                                Amenities:
+                            </span>
                             <span className='lg:text-xl '>
-                                {amenities?.map((sz, i) => <p className='font-sans' key={i}>
+                                {amenities?.map((sz, i) => <p className='font-sans ml-10' key={i}>
                                     {sz}
                                 </p>)}
                             </span>
                         </p>
 
-                       
-
-                        <p className='lg:text-xl flex items-center justify-between'>Price:
-                            <div>
-                                $<span className='font-sans font-bold'> {price_per_night}</span>
-                            </div>
+                        <p className='lg:text-xl'>
+                            <span className='font-sans font-semibold'>Number of days for Staying: </span>
+                            5
                         </p>
 
-                        <p className='lg:text-xl flex items-center justify-between'>Total Amount:
-
-                            <div>
-                                $<span className='font-sans font-bold'> totalAmount</span>
-                            </div>
+                        <p className='lg:text-xl '>
+                            <span className='font-sans font-semibold'>Price: </span>
+                            ${price_per_night}
                         </p>
 
-
+                        <p className='lg:text-xl'>
+                            <span className='font-sans font-semibold'>Total Amount: </span>
+                            ${price_per_night}
+                        </p>
                         {/* -- */}
 
                         <div className="card-actions justify-center mt-5">
 
-                            <button onClick={() => handleAddToCart(_id)} className="btn bg-[#09A4DB] hover:bg-[#041C44] hover:text-white w-[184px] text-black" disabled={isAdmin?.admin === true}>Add to cart</button>
+                            <button onClick={() => handleAddToCart(_id)} className="btn bg-[#09A4DB] hover:bg-[#041C44] hover:text-white w-[184px] text-black" disabled={isAdmin?.admin === true}>Book your Room</button>
                         </div>
                     </div>
                 </div>
