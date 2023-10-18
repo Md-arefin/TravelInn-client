@@ -10,6 +10,7 @@ const Cart = () => {
 
     const totalPrice = carts.reduce((sum, item) => item.totalAmount + sum, 0)
 
+
     console.log(carts);
     const handleDeleteItems = (id) => {
         fetch(`http://localhost:5000/carts/${id}`, {
@@ -33,71 +34,78 @@ const Cart = () => {
 
     return (
         <div>
-        <div className='flex items-center justify-center mx-20 gap-5'>
-            <p className='text-xl my xl:text-3xl my-6 ml-5'>Total Product : {carts.length}</p>
+            <div className='flex items-center justify-center mx-20 mt-20 gap-5'>
 
-            <div className='flex items-center justify-between gap-10'>
+                {/* <div className='flex items-center justify-between gap-10'>
                 <p className=' text-xl my xl:text-3xl my-6 ml-5'>Total Price :$ <span className='font-sans font-semibold'> {totalPrice.toFixed(2)}</span></p>
 
-                <Link to="/dashboard/payment" className='btn bg-slate-300 flex justify-between'>
-                    <p className='text-xl'> Pay</p>
-                    {/* <img src={cash} className='w-7' alt="" /> */}
-                </Link>
+            </div> */}
+            </div>
+
+            <div className="overflow-x-auto lg:w-3/4 rounded-xl md:mx-auto">
+                <table className="table table-zebra ">
+                    {/* head */}
+                    <thead>
+                        <tr className='text-lg md:text-xl bg-gray-300 text-black'>
+                            <th>
+                            </th>
+                            <th className='text-center'>Hotels Name</th>
+                            <th className='text-center'>Total days</th>
+                            <th className='text-center'>Price per night</th>
+                            <th className='text-center'>Total Price</th>
+                            <th className='text-center'>Delete Item</th>
+                            <th className='text-center'>Pay the Bills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* row 1 */}
+                        {
+                            carts.map((cart, i) =>
+                                <tr key={cart._id}>
+                                    <th className='font-serif text-xl'>
+                                        {i + 1}
+                                    </th>
+                                    <td className='flex items-center justify-center gap-5'>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-full h-20">
+                                                <img src={cart.images} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div className="font-bold text-xl">{cart.name}</div>
+                                    </td>
+
+                                    <td>
+
+                                    </td>
+
+                                    <td className='text-xl text-right'>
+                                    <span className='font-bold text-2xl'>$</span>{cart.price_per_night}
+                                    </td>
+
+                                    <td className='text-xl text-right'>
+                                       <span className='font-bold text-2xl'>$</span>{cart.totalAmount}
+                                    </td>
+                                    <td className='text-center'>
+                                        <div onClick={() => handleDeleteItems(cart._id)} className='btn bg-red-600 text-white hover:text-black'>
+                                            <FaTrashAlt />
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <Link to="/dashboard/payment" className='btn bg-slate-300 flex justify-center'>
+                                            <p className='text-xl text-center'> Pay</p>
+                                            {/* <img src={cash} className='w-7' alt="" /> */}
+                                        </Link>
+                                    </td>
+                                </tr>
+                            )
+                        }
+
+
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <div className="overflow-x-auto lg:w-3/4 rounded-xl md:mx-auto">
-            <table className="table table-zebra ">
-                {/* head */}
-                <thead>
-                    <tr className='text-lg md:text-xl bg-gray-300 text-black'>
-                        <th>
-                        </th>
-                        <th>Items</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Delete Item</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* row 1 */}
-                    {
-                        carts.map((cart, i) =>
-                            <tr key={cart._id}>
-                                <th className='font-serif text-xl'>
-                                    {i + 1}
-                                </th>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-full h-20">
-                                            <img src={cart.images} alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="font-bold text-xl">{cart.name}</div>
-                                </td>
-                                <td className='text-xl text-center'>
-                                    {cart.quantity}
-                                </td>
-                                <td className='text-xl text-right'>
-                                    $ {cart.totalAmount}
-                                </td>
-                                <td className='text-center'>
-                                    <div onClick={() => handleDeleteItems(cart._id)} className='btn bg-red-600 text-white hover:text-black'>
-                                        <FaTrashAlt />
-                                    </div>
-                                </td>
-                            </tr>
-                        )
-                    }
-
-                    {/* row 2 */}
-                </tbody>
-            </table>
-        </div>
-    </div>
     );
 };
 

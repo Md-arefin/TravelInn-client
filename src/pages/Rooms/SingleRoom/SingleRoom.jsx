@@ -11,7 +11,7 @@ const SingleRoom = () => {
     const [isAdmin] = useAdmin();
     const { user } = useContext(AuthContext);
     const hotel = useLoaderData();
-    const [totalAmount, setTotalAmount] = useState(1);
+    const [totalAmount, setTotalAmount] = useState(100);
     const [, cartRefetch] = useCart();
 
     console.log(isAdmin?.admin);
@@ -23,7 +23,7 @@ const SingleRoom = () => {
     const handleAddToCart = (id) => {
 
         const cartItem = {
-            productId:  _id,
+            productId:  id,
             UserEmail: user?.email,
             images, 
             name, 

@@ -18,6 +18,7 @@ import SingleRoom from '../pages/Rooms/SingleRoom/SingleRoom';
 import Cart from '../pages/Dashboard/Users/Cart/Cart';
 import PaidHistory from '../pages/Dashboard/Users/PaidHistory/PaidHistory';
 import UserReview from '../pages/Dashboard/Users/UserReview/UserReview';
+import Payment from '../pages/Dashboard/Users/Payment/Payment';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "userReview",
         element: <UserReview />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
 
 
