@@ -5,6 +5,9 @@ import useAdmin from '../../../components/Hooks/useAdmin';
 import useCart from '../../../components/Hooks/useCart';
 import { AuthContext } from '../../../provider/AuthProvider';
 import RoomSlider from './RoomSlider/RoomSlider';
+import { DateRange } from 'react-date-range'
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
 
 const SingleRoom = () => {
 
@@ -23,13 +26,13 @@ const SingleRoom = () => {
     const handleAddToCart = (id) => {
 
         const cartItem = {
-            productId:  id,
+            productId: id,
             UserEmail: user?.email,
-            images, 
-            name, 
-            location, 
-            amenities, 
-            price_per_night, 
+            images,
+            name,
+            location,
+            amenities,
+            price_per_night,
             description,
             totalAmount
         }
@@ -122,6 +125,16 @@ const SingleRoom = () => {
                             <button onClick={() => handleAddToCart(_id)} className="btn bg-[#09A4DB] hover:bg-[#041C44] hover:text-white w-[184px] text-black" disabled={isAdmin?.admin === true}>Book your Room</button>
                         </div>
                     </div>
+                </div>
+
+                <div>
+                    <DateRange
+                        rangeColors={['#262626']}
+                        date={new Date()}
+                        direction='vertical'
+                        showDateDisplay={false}
+                        minDate={new Date()}
+                    />
                 </div>
             </div>
 
