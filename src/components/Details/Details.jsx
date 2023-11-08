@@ -7,8 +7,8 @@ const Details = ({ hotel, CSS }) => {
     } = hotel;
 
     return (
-        <div key={_id} className="card w-3/3 h-[550px] bg-base-100 shadow-xl relative">
-            <figure><img className='w-full h-[100vh]' src={images} alt={name} /></figure>
+        <div key={_id} className="card bg-base-100 w-3/3 h-[620px]  shadow-xl relative">
+            <img className='w-full object-cover rounded-t-2xl h-[280px]' src={images} alt={name} />
             <div className="card-body">
                 <h2 className="text-center font-bold text-2xl">{name}</h2>
                 <p className='flex items-center text-lg'>

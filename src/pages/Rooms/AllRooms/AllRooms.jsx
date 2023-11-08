@@ -10,7 +10,6 @@ const AllRooms = () => {
     const [filteredHotels, setFilteredHotels] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedPriceRange, setSelectedPriceRange] = useState('all');
-    const productsPerPage = 6;
     const [CSS, setCSS] = useState('grid');
 
     useEffect(() => {
@@ -28,9 +27,10 @@ const AllRooms = () => {
     };
 
     // pagination calculations
-    const totalPages = Math.ceil(filteredHotels.length / productsPerPage);
-    const startIndex = (currentPage - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
+    const hotelsPerPage = 6;
+    const totalPages = Math.ceil(filteredHotels.length / hotelsPerPage);
+    const startIndex = (currentPage - 1) * hotelsPerPage;
+    const endIndex = startIndex + hotelsPerPage;
     const currentHotels = filteredHotels.slice(startIndex, endIndex);
 
     const handlePageChange = (page) => {
@@ -80,7 +80,7 @@ const AllRooms = () => {
                 </div>
 
                 {/* data fetch */}
-                <div className={`w-2/2 ${CSS} flex-col grid-cols-1 lg:grid-cols-3 gap-10`}>
+                <div className={`w-full ${CSS} flex-col grid-cols-1 lg:grid-cols-3 gap-10`}>
                     {
                         currentHotels.map(hotel =>
                             <Details key={hotel._id} hotel={hotel} CSS={CSS} />
@@ -94,7 +94,7 @@ const AllRooms = () => {
                     <div
                         key={index}
                         onClick={() => handlePageChange(index + 1)} >
-                        <p className='cursor-pointer bg-slate-500 text-white w-10 text-center rounded-lg hover:bg-gray-700'>{index + 1}</p>
+                        <p className={`cursor-pointer border-2 ${currentPage === index + 1 ? `bg-black text-white` : ``} hover:text-white w-10 text-center rounded-lg hover:bg-gray-700`}>{index + 1}</p>
                     </div>
                 ))}
             </div>
