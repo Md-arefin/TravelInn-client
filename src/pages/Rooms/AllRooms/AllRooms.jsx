@@ -11,13 +11,13 @@ const AllRooms = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedPriceRange, setSelectedPriceRange] = useState('all');
     const [CSS, setCSS] = useState('grid');
-    const [active, setActive] = useState('');
+    const [active, setActive] = useState('All');
 
     useEffect(() => {
         fetch('http://localhost:5000/all-rooms')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setHotels(data);
                 setFilteredHotels(data);
             })
@@ -55,6 +55,26 @@ const AllRooms = () => {
         setCurrentPage(1);
     }
 
+    const handlePrice = (props) => {
+        if (props == "lowest") {
+            fetch(`http://localhost:5000/lowest`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setFilteredHotels(data);
+                })
+        } else if(props == "highest"){
+            fetch(`http://localhost:5000/highest`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setFilteredHotels(data);
+            })
+        }
+
+        setCurrentPage(1);
+    }
+
     return (
         <div className='md:my-10 lg:my-10 relative'>
 
@@ -65,12 +85,18 @@ const AllRooms = () => {
 
             <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
 
-                <div className='w-96 h-96 flex flex-col lg:ml-14 space-y-10 lg:sticky top-10'>
+                <div className='w-96 h-[80vh] flex flex-col lg:ml-14 space-y-10 lg:sticky top-2'>
 
+                    {/* Available Rooms */}
+                    {/* <div className='bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case'>
+                        Available Rooms
+                    </div> */}
+
+                    {/* locations */}
                     <div className="">
-                        <p className=" font-semibold text-center  text-xl btn border-none w-full">Location</p>
+                        <p className="bg-neutral-400 font-semibold text-center  text-xl btn border-none w-full normal-case">Location</p>
 
-                        <ul className=" space-y-2 w-[90%] mx-auto menu">
+                        <ul className="space-y-2 w-[90%] mx-auto menu">
                             {
                                 uniqueLocations?.map((location, i) =>
                                     <li
@@ -83,36 +109,28 @@ const AllRooms = () => {
                         </ul>
                     </div>
 
+                    {/* Price */}
+                    <div className="">
+                        <p className="bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case">Price
+                        </p>
+                        <ul className="menu  space-y-2 mx-auto w-[90%]">
 
-                    <details className="dropdown cursor-pointer">
-                        <summary className="font-semibold text-center text-xl btn border-none hover:bg-transparent">Stay Price
-                            <MdKeyboardArrowDown />
-                        </summary>
-                        <p></p>
-                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Highest Price</li>
-                        </ul>
-                    </details>
+                            <li onClick={() => handlePrice('lowest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Lowest Price</li>
 
-                    <details className="dropdown cursor-pointer">
-                        <summary className="font-semibold text-center text-xl btn border-none hover:bg-transparent">Room Size  <MdKeyboardArrowDown /></summary>
-                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Larger</li>
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Smallest</li>
+                            <li onClick={() => handlePrice('highest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Highest Price</li>
                         </ul>
-                    </details>
+                    </div>
 
-                    <details className="dropdown cursor-pointer">
-                        <summary className=" font-semibold text-center text-xl btn border-none hover:bg-transparent">Services:
-                            <MdKeyboardArrowDown />
-                        </summary>
-                        <p></p>
-                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
-                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'> Highest Price</li>
+
+                    {/* Room Size */}
+                    <div className="">
+                        <p className="bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case">Rooms Size
+                        </p>
+                        <ul className="menu  space-y-2 mx-auto w-[90%]">
+                            <li className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Small Room</li>
+                            <li className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Large Room</li>
                         </ul>
-                    </details>
+                    </div>
                 </div>
 
                 {/* data fetch */}
