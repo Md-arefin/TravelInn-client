@@ -1,7 +1,6 @@
 import React from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { ImList } from 'react-icons/im';
-import { BsGrid3X3Gap } from 'react-icons/bs';
+
 
 const RoomsHeader = () => {
     return (
@@ -38,10 +37,7 @@ const RoomsHeader = () => {
                     </div>
                 </div>
 
-                <div className='text-white flex items-center justify-center gap-10'>
-                    <ImList className='cursor-pointer text-xl'/>
-                    <BsGrid3X3Gap className='cursor-pointer text-xl'/>
-                </div>
+                
             </div>
         </div>
     );

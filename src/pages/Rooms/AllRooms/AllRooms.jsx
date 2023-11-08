@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import Details from '../../../components/Details/Details';
+import { ImList } from 'react-icons/im';
+import { BsGrid3X3Gap } from 'react-icons/bs';
 
 const AllRooms = () => {
 
-    const [hotels, setHotels] = useState([])
+    const [hotels, setHotels] = useState([]);
+    const [CSS, setCSS] = useState('grid');
 
     useEffect(() => {
         fetch('http://localhost:5000/all-rooms')
@@ -13,10 +16,18 @@ const AllRooms = () => {
                 console.log(data);
                 setHotels(data);
             })
-    }, [])
+    }, []);
+
+    const handleCss = (props) =>{
+        setCSS(props)
+    };
 
     return (
-        <div className='md:my-10 lg:my-10'>
+        <div className='md:my-10 lg:my-10 relative'>
+            <div className='text-white  absolute lg:-top-20 lg:right-32 flex items-center justify-center gap-10'>
+                <ImList onClick={()=> handleCss('flex')} className='hover:text-black cursor-pointer text-xl' />
+                <BsGrid3X3Gap onClick={()=> handleCss('grid')} className='hover:text-black cursor-pointer text-xl' />
+            </div>
             <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
 
                 <div className='w-96 h-96 lg:ml-14 lg:sticky top-10'>
@@ -54,7 +65,7 @@ const AllRooms = () => {
                 </div>
 
                 {/* data fetch */}
-                <div className='w-2/2 grid grid-cols-1 lg:grid-cols-3 gap-10'>
+                <div className={`w-2/2 ${CSS} flex-col grid-cols-1 lg:grid-cols-3 gap-10`}>
                     {
                         hotels.map(hotel =>
                             <Details key={hotel._id} hotel={hotel} />
