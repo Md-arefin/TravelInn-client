@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Details = ({ hotel }) => {
+const Details = ({ hotel, CSS }) => {
 
     const { _id, images, name, location, amenities, price_per_night, description
     } = hotel;
 
     return (
         <div key={_id} className="card w-3/3 h-[550px] bg-base-100 shadow-xl relative">
-            <figure><img className='w-full' src={images} alt={name} /></figure>
+            <figure><img className='w-full h-[100vh]' src={images} alt={name} /></figure>
             <div className="card-body">
                 <h2 className="text-center font-bold text-2xl">{name}</h2>
                 <p className='flex items-center text-lg'>
