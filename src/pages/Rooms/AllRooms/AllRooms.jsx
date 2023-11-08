@@ -60,18 +60,15 @@ const AllRooms = () => {
             fetch(`http://localhost:5000/lowest`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     setFilteredHotels(data);
                 })
         } else if(props == "highest"){
             fetch(`http://localhost:5000/highest`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setFilteredHotels(data);
             })
         }
-
         setCurrentPage(1);
     }
 
@@ -85,7 +82,7 @@ const AllRooms = () => {
 
             <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
 
-                <div className='w-96 h-[80vh] flex flex-col lg:ml-14 space-y-10 lg:sticky top-2'>
+                <div className='w-96 h-[80vh] flex flex-col lg:ml-14 space-y-10 lg:sticky top-10'>
 
                     {/* Available Rooms */}
                     {/* <div className='bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case'>
