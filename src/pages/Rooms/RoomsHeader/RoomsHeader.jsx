@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+
 
 
 const RoomsHeader = () => {
@@ -13,31 +13,9 @@ const RoomsHeader = () => {
                 </div>
             </div>
             <div className='w-full bg-[#895446] h-16 flex items-center justify-center gap-52'>
-                <div className='flex items-center justify-center gap-16'>
-                    <div>
-                        <details className="dropdown cursor-pointer">
-                            <summary className="text-white font-semibold text-center text-xl btn bg-transparent border-none hover:bg-transparent">Stay Price
-                                <MdKeyboardArrowDown />
-                            </summary>
-                            <p></p>
-                            <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                                <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
-                                <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Highest Price</li>
-                            </ul>
-                        </details>
-                    </div>
-                    <div>
-                        <details className="dropdown cursor-pointer">
-                            <summary className="text-white font-semibold text-center text-xl btn bg-transparent border-none hover:bg-transparent">Room Size  <MdKeyboardArrowDown /></summary>
-                            <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                                <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Larger</li>
-                                <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Smallest</li>
-                            </ul>
-                        </details>
-                    </div>
-                </div>
 
-                
+                <p className='text-white text-center text-2xl my-auto'>Enjoy your holidays in our beautiful Hotels</p>
+
             </div>
         </div>
     );

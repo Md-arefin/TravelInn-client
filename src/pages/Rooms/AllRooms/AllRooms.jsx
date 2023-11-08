@@ -3,7 +3,6 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import Details from '../../../components/Details/Details';
 import { ImList } from 'react-icons/im';
 import { BsGrid3X3Gap } from 'react-icons/bs';
-import { set } from 'react-hook-form';
 
 const AllRooms = () => {
 
@@ -12,6 +11,7 @@ const AllRooms = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedPriceRange, setSelectedPriceRange] = useState('all');
     const [CSS, setCSS] = useState('grid');
+    const [active, setActive] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:5000/all-rooms')
@@ -41,7 +41,7 @@ const AllRooms = () => {
 
     const Locations = hotels?.map(hotel => hotel.location);
     const uniqueLocations = ["All", ...new Set(Locations)]
-    console.log(['newLocations'], uniqueLocations);
+    // console.log(['active'], active);
 
 
     const handleLocations = (props) => {
@@ -51,6 +51,7 @@ const AllRooms = () => {
         } else {
             setFilteredHotels(hotels)
         }
+        setActive(props);
         setCurrentPage(1);
     }
 
@@ -64,40 +65,54 @@ const AllRooms = () => {
 
             <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
 
-                <div className='w-96 h-96 lg:ml-14 lg:sticky top-10'>
-                    <details className="dropdown cursor-pointer">
-                        <summary className=" font-semibold text-center text-xl btn border-none hover:bg-transparent">Location:
-                            <MdKeyboardArrowDown />
-                        </summary>
-                        <p></p>
-                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
+                <div className='w-96 h-96 flex flex-col lg:ml-14 space-y-10 lg:sticky top-10'>
+
+                    <div className="">
+                        <p className=" font-semibold text-center  text-xl btn border-none w-full">Location</p>
+
+                        <ul className=" space-y-2 w-[90%] mx-auto menu">
                             {
                                 uniqueLocations?.map((location, i) =>
                                     <li
                                         key={i}
                                         onClick={() => handleLocations(location)}
-                                        className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>{location}</li>)
+                                        className={`btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 
+                                        ${active == location ? 'bg-black text-white' : ''}`}>{location}
+                                    </li>)
                             }
                         </ul>
-                    </details>
-                    <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'> Room</li>
-                    <div className='w-96 mx-auto space-y-20 mt-10'>
-                        <div>
-                            <details className="dropdown cursor-pointer">
-                                <summary className=" font-semibold text-center text-xl btn border-none hover:bg-transparent">Services:
-                                    <MdKeyboardArrowDown />
-                                </summary>
-                                <p></p>
-                                <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
-                                    <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
-                                    <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'> Highest Price</li>
-                                </ul>
-                            </details>
-                        </div>
-                        <div>
-
-                        </div>
                     </div>
+
+
+                    <details className="dropdown cursor-pointer">
+                        <summary className="font-semibold text-center text-xl btn border-none hover:bg-transparent">Stay Price
+                            <MdKeyboardArrowDown />
+                        </summary>
+                        <p></p>
+                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Highest Price</li>
+                        </ul>
+                    </details>
+
+                    <details className="dropdown cursor-pointer">
+                        <summary className="font-semibold text-center text-xl btn border-none hover:bg-transparent">Room Size  <MdKeyboardArrowDown /></summary>
+                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Larger</li>
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Smallest</li>
+                        </ul>
+                    </details>
+
+                    <details className="dropdown cursor-pointer">
+                        <summary className=" font-semibold text-center text-xl btn border-none hover:bg-transparent">Services:
+                            <MdKeyboardArrowDown />
+                        </summary>
+                        <p></p>
+                        <ul className=" shadow menu dropdown-content z-[1] bg-base-100 rounded-md w-52">
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'>Lowest Price</li>
+                            <li className='btn bg-transparent cursor-pointer hover:bg-[#895446] hover:text-white py-1'> Highest Price</li>
+                        </ul>
+                    </details>
                 </div>
 
                 {/* data fetch */}
