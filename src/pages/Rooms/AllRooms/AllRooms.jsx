@@ -13,14 +13,17 @@ const AllRooms = () => {
     const [CSS, setCSS] = useState('grid');
     const [active, setActive] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`${import.meta.env.VITE_API_URL}/all-rooms`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
                 setHotels(data);
                 setFilteredHotels(data);
+                setLoading(false);
             })
 
     }, []);
@@ -94,84 +97,92 @@ const AllRooms = () => {
             </div>
 
             {/* search form */}
-            <div>
-                <form className='my-10 px-5' onSubmit={handleSearch}>
-
-                    <div className="flex gap-2 justify-center my-2">
-
-                        <input
-                            className="w-8/12 px-4 rounded-2xl border border-gray-300 p-2"
-                            type="text"
-                            placeholder='Search for your dream hotel'
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            required
-                        />
-                        <button type='submit' className='btn normal-case'> Search <FaSearch /></button>
+            {
+                loading ?
+                    <div className='mx-auto w-full flex items-center justify-center'>
+                        <span className=" loading loading-dots loading-lg"></span>
                     </div>
-                </form>
-            </div>
+                    : <>
+                        <div>
+                            <form className='my-10 px-5' onSubmit={handleSearch}>
 
-            <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
+                                <div className="flex gap-2 justify-center my-2">
 
-                <div className='w-96 h-[80vh] flex flex-col lg:ml-14 space-y-10 lg:sticky top-10'>
+                                    <input
+                                        className="w-8/12 px-4 rounded-2xl border border-gray-300 p-2"
+                                        type="text"
+                                        placeholder='Search for your dream hotel'
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        required
+                                    />
+                                    <button type='submit' className='btn normal-case'> Search <FaSearch /></button>
+                                </div>
+                            </form>
+                        </div>
 
-                    {/* Available Rooms */}
-                    {/* <div className='bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case'>
-                        Available Rooms
-                    </div> */}
+                        <div className='flex flex-col md:flex-row justify-center gap-5 w-full mx-auto lg:px-10'>
 
-                    {/* locations */}
-                    <div className="">
-                        <p className="bg-neutral-400 font-semibold text-center  text-xl btn border-none w-full normal-case">Location</p>
+                            <div className='w-96 h-[80vh] flex flex-col lg:ml-14 space-y-10 lg:sticky top-10'>
 
-                        <ul className="space-y-2 w-[90%] mx-auto menu">
-                            {
-                                uniqueLocations?.map((location, i) =>
-                                    <li
-                                        key={i}
-                                        onClick={() => handleLocations(location)}
-                                        className={`btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 
-                                        ${active == location ? 'bg-black text-white' : ''}`}>{location}
-                                    </li>)
-                            }
-                        </ul>
-                    </div>
+                                {/* Available Rooms */}
+                                {/* <div className='bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case'>
+                    Available Rooms
+                </div> */}
 
-                    {/* Price */}
-                    <div className="">
-                        <p className="bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case">Price
-                        </p>
-                        <ul className="menu  space-y-2 mx-auto w-[90%]">
+                                {/* locations */}
+                                <div className="">
+                                    <p className="bg-neutral-400 font-semibold text-center  text-xl btn border-none w-full normal-case">Location</p>
 
-                            <li onClick={() => handlePrice('lowest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Lowest Price</li>
+                                    <ul className="space-y-2 w-[90%] mx-auto menu">
+                                        {
+                                            uniqueLocations?.map((location, i) =>
+                                                <li
+                                                    key={i}
+                                                    onClick={() => handleLocations(location)}
+                                                    className={`btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 
+                                    ${active == location ? 'bg-black text-white' : ''}`}>{location}
+                                                </li>)
+                                        }
+                                    </ul>
+                                </div>
 
-                            <li onClick={() => handlePrice('highest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Highest Price</li>
-                        </ul>
-                    </div>
+                                {/* Price */}
+                                <div className="">
+                                    <p className="bg-neutral-400 font-semibold text-center text-xl btn border-none w-full normal-case">Price
+                                    </p>
+                                    <ul className="menu  space-y-2 mx-auto w-[90%]">
+
+                                        <li onClick={() => handlePrice('lowest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Lowest Price</li>
+
+                                        <li onClick={() => handlePrice('highest')} className='btn cursor-pointer hover:bg-[#895446] hover:text-white py-1 normal-case'>Highest Price</li>
+                                    </ul>
+                                </div>
 
 
-                </div>
+                            </div>
 
-                {/* data fetch */}
-                <div className={`w-full ${CSS} flex-col grid-cols-1 lg:grid-cols-3 gap-10`}>
-                    {
-                        currentHotels.map(hotel =>
-                            <Details key={hotel._id} hotel={hotel} CSS={CSS} />
-                        )
-                    }
-                </div>
-            </div>
+                            {/* data fetch */}
+                            <div className={`w-full ${CSS} flex-col grid-cols-1 lg:grid-cols-3 gap-10`}>
+                                {
+                                    currentHotels.map(hotel =>
+                                        <Details key={hotel._id} hotel={hotel} CSS={CSS} />
+                                    )
+                                }
+                            </div>
+                        </div>
 
-            <div className="flex items-center justify-center gap-5 my-16 xl:ml-52">
-                {Array.from({ length: totalPages }).map((_, index) => (
-                    <div
-                        key={index}
-                        onClick={() => handlePageChange(index + 1)} >
-                        <p className={`cursor-pointer border-2 ${currentPage === index + 1 ? `bg-black text-white` : ``} hover:text-white w-10 text-center rounded-lg hover:bg-gray-700`}>{index + 1}</p>
-                    </div>
-                ))}
-            </div>
+                        <div className="flex items-center justify-center gap-5 my-16 xl:ml-52">
+                            {Array.from({ length: totalPages }).map((_, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => handlePageChange(index + 1)} >
+                                    <p className={`cursor-pointer border-2 ${currentPage === index + 1 ? `bg-black text-white` : ``} hover:text-white w-10 text-center rounded-lg hover:bg-gray-700`}>{index + 1}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+            }
         </div>
     );
 };
