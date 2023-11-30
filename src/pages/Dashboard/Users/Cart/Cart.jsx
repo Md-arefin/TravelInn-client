@@ -13,7 +13,7 @@ const Cart = () => {
 
     console.log(carts);
     const handleDeleteItems = (id) => {
-        fetch(`http://localhost:5000/carts/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/carts/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

@@ -7,12 +7,12 @@ import Swal from 'sweetalert2';
 const AllUsers = () => {
 
     const { data: users = [], refetch } = useQuery(["users"], async () => {
-        const res = await fetch('http://localhost:5000/all-users')
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/all-users`)
         return res.json();
     })
 
     const handleAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -32,7 +32,7 @@ const AllUsers = () => {
     }
 
     const handleDeleteUser = (user) => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/users/${user._id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

@@ -29,7 +29,7 @@ const Login = () => {
                     name: loggedUser.displayName,
                     email: loggedUser.email
                 }
-                fetch('http://localhost:5000/add-users', {
+                fetch(`${import.meta.env.VITE_API_URL}/add-users`, {
                     method: "POST",
                     headers: {
                         'content-type': "application/json"
@@ -67,7 +67,7 @@ const Login = () => {
                     email: loggedUser.email,
                     imgURL: loggedUser.photoURL,
                 }
-                fetch('http://localhost:5000/add-users', {
+                fetch(`${import.meta.env.VITE_API_URL}/add-users`, {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",

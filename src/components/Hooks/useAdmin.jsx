@@ -9,7 +9,7 @@ const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         enabled: !loading,
         queryFn: async () =>{
-            const res = await fetch (`http://localhost:5000/users/admin/${user?.email}`);
+            const res = await fetch (`${import.meta.env.VITE_API_URL}/users/admin/${user?.email}`);
             console.log(res);
             return res.json();
         }

@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: "room/:id",
         element: <SingleRoom />,
-        loader: ({ params }) => fetch(`http://localhost:5000/room/${params.id}`),
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
       },
     ],
   },
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       {
         path: "edit-room/:id",
         element: <EditRoom />,
-        loader: ({ params }) => fetch(`http://localhost:5000/room/${params.id}`),
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/room/${params.id}`),
       },
       {
         path: "AddRoom",

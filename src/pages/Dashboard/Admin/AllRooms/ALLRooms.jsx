@@ -8,14 +8,14 @@ import Swal from 'sweetalert2';
 const ALLRooms = () => {
 
     const { data: allRooms = [], refetch } = useQuery(["allRooms"], async () => {
-        const res = await fetch('http://localhost:5000/all-rooms')
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/all-rooms`)
         return res.json();
     })
 
     console.log(allRooms);
 
     const handleDeleteProduct = (id) => {
-        fetch(`http://localhost:5000/delete-room/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/delete-room/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

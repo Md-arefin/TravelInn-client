@@ -9,7 +9,7 @@ const useCart = () =>{
     const { data: carts= [], refetch: cartRefetch} = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () =>{
-            const res = await fetch(`http://localhost:5000/carts/${user?.email}`)
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/carts/${user?.email}`)
 
             return res.json();
         },

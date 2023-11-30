@@ -58,7 +58,7 @@ const AddRoom = () => {
                         sales
                     };
 
-                    fetch("http://localhost:5000/add-product", {
+                    fetch(`${import.meta.env.VITE_API_URL}/add-product`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"

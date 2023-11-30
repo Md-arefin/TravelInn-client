@@ -16,7 +16,7 @@ const CheckOutForm = ({ price, carts }) => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch(`${import.meta.env.VITE_API_URL}/create-payment-intent`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -96,7 +96,7 @@ const CheckOutForm = ({ price, carts }) => {
                 orderStatus: "delivery Pending"
             }
 
-            fetch("http://localhost:5000/payment", {
+            fetch(`${import.meta.env.VITE_API_URL}/payment`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

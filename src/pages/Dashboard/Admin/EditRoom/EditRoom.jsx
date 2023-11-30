@@ -39,7 +39,7 @@ const EditRoom = () => {
             bestSales,
         }
 
-        fetch(`http://localhost:5000/edit-product/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/edit-product/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

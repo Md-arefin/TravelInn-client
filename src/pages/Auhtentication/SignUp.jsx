@@ -57,7 +57,7 @@ const SignUp = () => {
                                         email,
                                         imgURL
                                     }
-                                    fetch('http://localhost:5000/add-users', {
+                                    fetch(`${import.meta.env.VITE_API_URL}/add-users`, {
                                         method: "POST",
                                         headers: {
                                             'content-type': "application/json"
@@ -101,7 +101,7 @@ const SignUp = () => {
                     email: loggedUser.email,
                     imgURL: loggedUser.photoURL
                 }
-                fetch('http://localhost:5000/add-users', {
+                fetch(`${import.meta.env.VITE_API_URL}/add-users`, {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",

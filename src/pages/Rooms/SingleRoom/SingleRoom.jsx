@@ -38,7 +38,7 @@ const SingleRoom = () => {
         }
 
         if (user) {
-            fetch("http://localhost:5000/carts", {
+            fetch(`${import.meta.env.VITE_API_URL}/carts`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

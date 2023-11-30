@@ -9,7 +9,7 @@ const PaidHistory = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/get-payment/${user?.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}/get-payment/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log("[data]", data);

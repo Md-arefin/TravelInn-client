@@ -24,7 +24,7 @@ const UserReview = () => {
             message: data?.message,
         };
         console.log(reviewData);
-        fetch("http://localhost:5000/add-review", {
+        fetch(`${import.meta.env.VITE_API_URL}/add-review`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
